@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 
 
 
-@ResponseStatus(HttpStatus.BAD_REQUEST)
-public class UnsupportedMathOperationException extends RuntimeException {
-    public UnsupportedMathOperationException(String ex){
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class ResourceNotFound extends RuntimeException {
+    public ResourceNotFound(String ex){
         super(ex);
     }
 
