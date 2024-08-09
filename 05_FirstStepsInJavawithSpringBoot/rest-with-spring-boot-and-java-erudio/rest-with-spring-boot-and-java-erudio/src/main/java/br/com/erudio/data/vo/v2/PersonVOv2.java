@@ -1,10 +1,11 @@
-package br.com.erudio.data.vo.v1;
+package br.com.erudio.data.vo.v2;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Objects;
 
 
-public class PersonVO implements Serializable {
+public class PersonVOv2 implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -14,8 +15,9 @@ public class PersonVO implements Serializable {
     private String lastName;
     private String address;
     private String gender;
+    private Date birthday;
 
-    public PersonVO() {
+    public PersonVOv2() {
 
     }
 
@@ -59,21 +61,23 @@ public class PersonVO implements Serializable {
         this.id = id;
     }
 
-    @Override
-    public final boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof PersonVO personVO)) return false;
+    public Date getBirthday() {
+        return birthday;
+    }
 
-        return Objects.equals(id, personVO.id) && Objects.equals(firstName, personVO.firstName) && Objects.equals(lastName, personVO.lastName) && Objects.equals(address, personVO.address) && Objects.equals(gender, personVO.gender);
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof PersonVOv2 that)) return false;
+        return Objects.equals(id, that.id) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(address, that.address) && Objects.equals(gender, that.gender) && Objects.equals(birthday, that.birthday);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hashCode(id);
-        result = 31 * result + Objects.hashCode(firstName);
-        result = 31 * result + Objects.hashCode(lastName);
-        result = 31 * result + Objects.hashCode(address);
-        result = 31 * result + Objects.hashCode(gender);
-        return result;
+        return Objects.hash(id, firstName, lastName, address, gender, birthday);
     }
 }
